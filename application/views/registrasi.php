@@ -129,24 +129,26 @@
             <div class="tab-empty">
 
                 <form class="form" role="form" method="post" action="post_register">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input class="form-control" placeholder="Username" type="text" id='username' name="username" required>
-                        </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input class="form-control" placeholder="Username" type="text" id='username' name="username" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input class="form-control" placeholder="Email" type="email" id='email' name="email" required>
-                        </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input class="form-control" placeholder="Email" type="email" id='email' name="email" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name='password' class="form-control" placeholder="Password">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name='password' class="form-control" placeholder="Password">
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
 

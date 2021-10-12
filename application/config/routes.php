@@ -55,7 +55,16 @@ $route['login']['get'] = 'auth/login';
 $route['login']['post'] = 'auth/post_login';
 $route['logout'] = 'auth/logout';
 
+// PAGES
 $route['admin'] = 'admin/index';
+// $route['admin'] = 'member/index';
+// PAGES END
+
+// CONTROLLER
+// $route['delete_post/(:num)'] = 'member/delete_post/$1';
+$route['delete_user/(:num)'] = 'admin/delete_user/$1';
+$route['editUser'] = 'admin/editUser';
+// CONTROLLER END
 
 $route['default_controller'] = 'member/index';
 $route['404_override'] = '';

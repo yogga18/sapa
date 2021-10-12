@@ -17,20 +17,15 @@ class UserModel extends CI_Model
         return $this->db->get($this->table)->result();  // Mengambil semua data di table user
     }
 
-    public function create($data)   // INSERT DATA (register)
+    // FOR PAGE ADMIN
+
+    public function create($data)   // INSERT DATA (registrasi)
     {
         return $this->db->insert($this->table, $data);
     }
 
-    public function update($data, $id)
+    public function deleteUser($id)     // DELETE ACCOUNT USER (delete)
     {
-        return $this->db->update($this->table, $data, array('id' => $id));
+        return $this->db->delete($this->table, array('id' => $id));
     }
-
-    // FOR ADMIN
-
-    // public function getAllUser()
-    // {
-    //     return $this->db->get($this->table)->result();  // Mengambil semua data di table user
-    // }
 }

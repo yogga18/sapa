@@ -25,7 +25,6 @@ class Member extends CI_Controller
         $data = [
             "user" => $this->user,
             "posts" => $this->PostModel->getAll()
-
         ];
         $this->load->view('home', $data);
     }

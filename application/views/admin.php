@@ -120,6 +120,56 @@
             <!-- /.sidebar -->
         </aside>
 
+        <!-- /.modal -->
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Data Users</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form class="form" role="form" method="post" action="editUser">
+
+                        <input value="<?= $user->id; ?>" type="hidden" name="id">
+                        <input value="<?= $user->role; ?>" type="hidden" name="id">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input class="form-control" value="<?= $user->username; ?>" type="text" name="username" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <input class="form-control" value="<?= $user->email; ?>" type="email" name="email" required>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input class="form-control" value="<?= $user->password; ?>" type="email" name="email" required>
+                                </div> -->
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
 
@@ -130,7 +180,7 @@
 
                 <div class="container my-5">
                     <div class="card">
-                        <!-- /.card-header -->
+
                         <div class="card-body">
                             <table id="example1" class="table table-hover table-bordered table-striped">
                                 <thead class="table-dark">
@@ -139,28 +189,29 @@
                                         <th scope="col">Role</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Password</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $i = 1;
-                                    foreach ($posts as $post) : ?>
+                                    foreach ($member as $member) : ?>
                                         <tr class="table-warning">
 
                                             <th scope="row"><?= $i++; ?></th>
-                                            <td><?= $post->role; ?></td>
-                                            <td><?= $post->username; ?></td>
-                                            <td><?= $post->email; ?></td>
-                                            <td><?= $post->password; ?></td>
+                                            <td><?= $member->role; ?></td>
+                                            <td><?= $member->username; ?></td>
+                                            <td><?= $member->email; ?></td>
                                             <td>
                                                 <div class="wrapper-button">
-                                                    <a class="btn btn-danger btn-sm" href="delete_post/<?= $post->id; ?>"><i class="fas fa-trash-alt"></i></a>
 
-                                                    <!-- <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#editModal<?= $post->id; ?>">
+                                                    <a class="btn btn-danger btn-sm" href="delete_user/<?= $member->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                    <!-- <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $member->id; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </a> -->
+                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
 
                                                 </div>
                                             </td>
@@ -169,7 +220,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.card-body -->
+
                     </div>
                 </div>
 
