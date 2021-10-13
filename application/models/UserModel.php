@@ -28,4 +28,9 @@ class UserModel extends CI_Model
     {
         return $this->db->delete($this->table, array('id' => $id));
     }
+
+    public function update($data, $id)      // UPDATE ACCOUNT USER (update)
+    {
+        return $this->db->update($this->table, $data, array('id' => $id));
+    }
 }

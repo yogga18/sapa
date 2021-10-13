@@ -47,19 +47,32 @@ class Admin extends CI_Controller
         }
     }
 
+
+
     public function editUser()
     {
-        // Buat kerangka sesuai field di table database
-        $id = $this->input->post("id");
-        $username = $this->input->post("username");
-        $email = $this->input->post("email");
+        $id = $this->input->post('id');
+        $role = $this->input->post('role');
+        $username = $this->input->post('username');
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $avatar = $this->input->post('avatar');
 
-        // tentukan data mana saja yang ingin atau bisa di ubah (Susai Form di HTML)
-        $data = [
-            "username" => $username,
-            "email" => $email,
-        ];
+        $data = array(
+            'username' => $username,
+            'email' => $email,
+        );
+
+        if ($this->UserModel->update($data, $id) == 1) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+            redirect(base_url("admin"));
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+            redirect(base_url("admin"));
+        }
     }
+
+
 
     public function suratMasuk()
     {
