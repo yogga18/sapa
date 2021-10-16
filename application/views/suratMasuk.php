@@ -128,7 +128,7 @@
                     <h2 class="display-4">Surat Masuk</h2>
                 </div>
 
-                <div class="container my-5">
+                <!-- <div class="container my-5">
                     <div class="card">
 
                         <div class="card-body">
@@ -140,7 +140,8 @@
                                         <th scope="col">No Surat</th>
                                         <th scope="col">Alamat</th>
                                         <th scope="col">Kelurahan</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Foto</th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -153,7 +154,7 @@
                                         <td><?= $letters->alamat; ?></td>
                                         <td><?= $letters->kelurahan; ?></td>
                                         <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                                        <!-- <td>
+                                        <td>
                                                 <div class="wrapper-button">
 
                                                     <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
@@ -162,9 +163,62 @@
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                 </div>
-                                            </td> -->
+                                            </td>
                                     </tr>
                                 <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div> -->
+
+
+
+
+
+                <div class="container my-5">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <table id="example1" class="table table-hover table-bordered table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Tgl Surat</th>
+                                        <th scope="col">No Surat</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Kelurahan</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Foto</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($letter as $letters) : ?>
+                                        <tr class="table-warning">
+                                            <th scope="row"><?= $i++; ?></th>
+                                            <td><?= $letters->tgl_surat; ?></td>
+                                            <td><?= $letters->no_surat; ?></td>
+                                            <td><?= $letters->alamat; ?></td>
+                                            <td><?= $letters->kelurahan; ?></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+
+                                                <!-- <div class="wrapper-button">
+
+                                                    <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
+
+                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                </div> -->
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -191,7 +245,6 @@
         <script src="<?= base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
-
 
         <!-- DataTables  & Plugins --> <?= base_url('') ?>
         <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -228,6 +281,7 @@
                 });
             });
         </script>
+
 
 
 

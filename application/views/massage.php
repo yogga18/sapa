@@ -76,6 +76,15 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/massage">
+                                    <i class="nav-icon far fa-envelope"></i>
+                                    Messages
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/lihatSurat">
                                     <i class="nav-icon fas fa-eye"></i>
                                     Lihat Surat
