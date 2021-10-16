@@ -12,7 +12,6 @@ class Admin extends CI_Controller
         if ($this->session->userdata("login") == null && $this->session->userdata("admin") != true) {
             redirect(base_url('login'));
         }
-
         $this->user = $this->UserModel->getOne("id", $this->session->userdata("login"));
     }
 
@@ -61,6 +60,7 @@ class Admin extends CI_Controller
         $data = array(
             'username' => $username,
             'email' => $email,
+            'password' => $password,
         );
 
         if ($this->UserModel->update($data, $id) == 1) {
@@ -78,7 +78,7 @@ class Admin extends CI_Controller
     {
         $data = [
             "user" => $this->user,
-            "posts" => $this->PostModel->getAll()
+            "letter" => $this->PostModel->getAll()
 
         ];
         $this->load->view('suratMasuk', $data);

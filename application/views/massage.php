@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buat Akun</title>
+    <title>AdminLTE 3 | Tabbed IFrames</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -65,43 +67,24 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/index">
-                                    <i class="nav-icon fas fa-users"></i>
-                                    User Account
+                                <a href="<?= base_url(); ?>member/index">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    HOME
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>auth/registrasi">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    Buat Akun
+                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                    <i class="nav-icon fas fa-eye"></i>
+                                    Lihat Surat
                                 </a>
                             </h6>
                         </li>
 
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Surat Masuk BPBD
-                                </a>
-                            </h6>
-                        </li>
-
-                        <!-- <li class="nav-header">EXAMPLES</li> -->
                         <li>
                             <hr />
-                        </li>
-
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="#">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    mailbox
-                                </a>
-                            </h6>
                         </li>
 
                         <li class="nav-item">
@@ -112,84 +95,69 @@
                                 </a>
                             </h6>
                         </li>
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
-            <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-    </aside>
+            <!-- /.sidebar -->
+        </aside>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
 
-        <div class="tab-content pt-5">
-            <div class="tab-empty">
-
-                <div class="login-box">
-                    <!-- /.login-logo -->
-                    <div class="card card-outline card-primary">
-                        <div class="card-header text-center">
-                            <a href="#" class="h1"><b>PUPR</b></a>
-                        </div>
-                        <div class="card-body">
-                            <p class="login-box-msg">Buat Akun E - Pengaduan</p>
-
-                            <form class="form" role="form" method="post" action="post_register">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="input-group mb-3">
-                                            <input class="form-control" placeholder="Username" type="text" id='username' name="username" required>
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <span class="fas fa-user"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <input class="form-control" placeholder="Email" type="email" id='email' name="email" required>
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <span class="fas fa-envelope"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <input type="password" name='password' class="form-control" placeholder="Password">
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <span class="fas fa-lock"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- /.social-auth-links -->
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+            <div class="tab-content pt-5">
+                <div class="tab-empty">
+                    <h2 class="display-4">PAGE MASSAGES</h2>
                 </div>
-
             </div>
+
+
+            <div class="container-fluid">
+                <div class="col-md-10 m-auto">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Kirim Surat Pengaduan</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form class="form" role="form" method="post" action="<?= base_url('Member/create_letter'); ?>">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tgl Surat</label>
+                                    <input type="date" name="tgl_surat" class="form-control datetimepicker-input" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">No Surat</label>
+                                    <input type="text" name="no_surat" class="form-control" placeholder="No Surat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Alamat</label>
+                                    <input type="text" name="alamat" class="form-control" placeholder="Alamat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Kelurahan</label>
+                                    <input type="text" name="kelurahan" class="form-control" placeholder="Alamat">
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <!-- /.content-wrapper -->
 
-    </div>
-    <!-- /.content-wrapper -->
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

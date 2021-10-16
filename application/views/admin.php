@@ -27,8 +27,11 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>auth/logout" class="nav-link">Logout</a>
+                    <a href="<?= base_url('auth/logout'); ?>" class="nav-link">Logout</a>
                 </li>
+                <!-- <li class="nav-item d-none d-sm-inline-block">
+                    <a href="<?= base_url(); ?>auth/logout" class="nav-link">Logout</a>
+                </li> -->
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -134,13 +137,10 @@
 
                         <form class="form" role="form" method="post" action="editUser" role="form" enctype="multipart/form-data">
 
-
-                            <!-- <input value="<?= $members->role; ?>" type="hidden" name="id"> -->
-
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Name</label>
+                                        <label for="exampleInputEmail1">Username</label>
                                         <input value="<?= $members->id; ?>" type="hidden" name="id">
                                         <input class="form-control" id="username" name="username" value="<?= $members->username; ?>" type="text" required>
                                     </div>
@@ -162,10 +162,6 @@
                             </div>
                         </form>
 
-                        <!-- <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> -->
                     </div>
                     <!-- /.modal-content -->
                 </div>
@@ -174,7 +170,7 @@
         <?php endforeach; ?>
         <!-- /.modal -->
 
-        <!-- Content Wrapper. Contains page content -->
+        <!-- MENAMPILKAN SEMUA USER -->
         <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
 
             <div class="tab-content pt-5">
@@ -201,22 +197,18 @@
                                     $i = 1;
                                     foreach ($member as $members) : ?>
                                         <tr class="table-warning">
-
                                             <th scope="row"><?= $i++; ?></th>
                                             <td><?= $members->role; ?></td>
                                             <td><?= $members->username; ?></td>
                                             <td><?= $members->email; ?></td>
                                             <td>
                                                 <div class="wrapper-button">
-
+                                                    <!-- DELETE -->
                                                     <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
-                                                    <!-- <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $member->id; ?>">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a> -->
+                                                    <!-- UPDATE -->
                                                     <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-
                                                 </div>
                                             </td>
                                         </tr>
@@ -231,7 +223,7 @@
             </div>
 
         </div>
-        <!-- /.content-wrapper -->
+        <!-- MENAMPILKAN SEMUA USER END -->
 
         <!-- jQuery -->
         <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>

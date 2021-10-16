@@ -56,8 +56,13 @@ $route['login']['post'] = 'auth/post_login';
 $route['logout'] = 'auth/logout';
 
 // PAGES
+// ADMIN
 $route['admin'] = 'admin/index';
-// $route['admin'] = 'member/index';
+
+// USER
+$route['massage'] = 'member/massage';
+$route['lihatSurat'] = 'member/lihatSurat';
+
 // PAGES END
 
 // CONTROLLER

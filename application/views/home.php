@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -46,10 +48,15 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle elevation-2" alt="User Image">
+                        <?php if ($user->avatar != null) : ?>
+                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
+                        <?php else : ?>
+                            <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
+                        <?php endif; ?>
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block"><?= $user->username; ?></a>
+                        <a href="#" class="d-block"><?= $user->email; ?></a>
                     </div>
                 </div>
 
@@ -61,31 +68,24 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/index">
-                                    <i class="nav-icon far fa-envelope"></i>
+                                    <i class="nav-icon fas fa-home"></i>
                                     HOME
-                                </a>
-                            </h6>
-                        </li>
-
-                        <li class="nav-header">EXAMPLES</li>
-
-                        <!-- <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="#">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    mailbox
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>auth/registrasi">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Registrasi
+                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                    <i class="nav-icon fas fa-eye"></i>
+                                    Lihat Surat
                                 </a>
                             </h6>
-                        </li> -->
+                        </li>
+
+                        <li>
+                            <hr />
+                        </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
@@ -108,9 +108,38 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">PAGE HOME</h2>
+                    <!-- <h2 class="display-4">PAGE HOME</h2> -->
                 </div>
             </div>
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                            <div class="info-box-content">
+                                <a href="<?= base_url(); ?>member/massage">
+                                    <h5 class="info-box-text">Messages</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-success"><i class="fas fa-eye"></i></span>
+
+                            <div class="info-box-content">
+                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                    <h5 class="info-box-text">Lihat Surat</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
         <!-- /.content-wrapper -->

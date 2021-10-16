@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Tabbed IFrames</title>
+    <title>E -Pengaduan</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -65,43 +65,24 @@
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/index">
-                                    <i class="nav-icon fas fa-users"></i>
-                                    User Account
+                                <a href="<?= base_url(); ?>member/index">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    HOME
                                 </a>
                             </h6>
                         </li>
 
                         <li class="nav-item">
                             <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>auth/registrasi">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    Buat Akun
+                                <a href="<?= base_url(); ?>member/lihatSurat">
+                                    <i class="nav-icon fas fa-eye"></i>
+                                    Lihat Surat
                                 </a>
                             </h6>
                         </li>
 
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="<?= base_url(); ?>Admin/suratMasuk">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    Surat Masuk BPBD
-                                </a>
-                            </h6>
-                        </li>
-
-                        <!-- <li class="nav-header">EXAMPLES</li> -->
                         <li>
                             <hr />
-                        </li>
-
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="#">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    mailbox
-                                </a>
-                            </h6>
                         </li>
 
                         <li class="nav-item">
@@ -125,7 +106,7 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">Surat Masuk</h2>
+                    <h2 class="display-4">Surat Aduan</h2>
                 </div>
 
                 <div class="container my-5">
@@ -140,7 +121,7 @@
                                         <th scope="col">No Surat</th>
                                         <th scope="col">Alamat</th>
                                         <th scope="col">Kelurahan</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -152,17 +133,16 @@
                                         <td><?= $letters->no_surat; ?></td>
                                         <td><?= $letters->alamat; ?></td>
                                         <td><?= $letters->kelurahan; ?></td>
-                                        <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                                        <!-- <td>
-                                                <div class="wrapper-button">
+                                        <td>
+                                            <div class="wrapper-button">
 
-                                                    <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                <a class="btn btn-danger btn-sm" href="delete_surat/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
 
-                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                </div>
-                                            </td> -->
+                                                <!-- <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
+                                                    <i class="fas fa-edit"></i>
+                                                </a> -->
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
