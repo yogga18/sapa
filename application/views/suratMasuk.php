@@ -90,18 +90,8 @@
                             </h6>
                         </li>
 
-                        <!-- <li class="nav-header">EXAMPLES</li> -->
                         <li>
                             <hr />
-                        </li>
-
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="#">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    mailbox
-                                </a>
-                            </h6>
                         </li>
 
                         <li class="nav-item">
@@ -128,50 +118,88 @@
                     <h2 class="display-4">Surat Masuk</h2>
                 </div>
 
-                <!-- <div class="container my-5">
+                <div class="container my-5">
                     <div class="card">
 
-                        <div class="card-body">
-                            <table id="example1" class="table table-hover table-bordered table-striped">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Tgl Surat</th>
-                                        <th scope="col">No Surat</th>
-                                        <th scope="col">Alamat</th>
-                                        <th scope="col">Kelurahan</th>
-                                        <th scope="col">Keterangan</th>
-                                        <th scope="col">Foto</th>
-                                    </tr>
-                                </thead>
-                                <?php
-                                $i = 1;
-                                foreach ($letter as $letters) : ?>
-                                    <tr class="table-warning">
-                                        <th scope="row"><?= $i++; ?></th>
-                                        <td><?= $letters->tgl_surat; ?></td>
-                                        <td><?= $letters->no_surat; ?></td>
-                                        <td><?= $letters->alamat; ?></td>
-                                        <td><?= $letters->kelurahan; ?></td>
-                                        <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                                        <td>
-                                                <div class="wrapper-button">
+                        <!-- /.modal -->
+                        <?php foreach ($letter as $letters) : ?>
+                            <div class="modal fade" id="modal-lg<?= $letters->id; ?>">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Edit Data Users</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
 
-                                                    <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <form class="form" role="form" method="post" enctype="multipart/form-data" action="">
 
-                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="">Tanggal Surat</label>
+                                                        <input value="<?= $letters->id; ?>" type="hidden" name="id">
+                                                        <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="">No Surat</label>
+                                                        <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="">Alamat</label>
+                                                        <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="">Kelurahan</label>
+                                                        <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="">Keterangan</label>
+                                                        <input class="form-control" id="keterangan" name="keterangan" value="<?= $letters->keterangan; ?>" type="text" required>
+                                                    </div>
+
+                                                    <h5>Foto</h5>
+
+                                                    <img src="<?= base_url('image/' . $letters->image) ?>" height="150px" width="300px" alt="image">
+
+                                                    <div class="custom-file">
+                                                        <input type="hidden" name="old_image" value="<?= $letters->image; ?>">
+                                                        <input type="file" name="image" class="custom-file-input" id="customFile">
+                                                        <label class="custom-file-label" for="customFile">Pilih gambar</label>
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <div class="form-group py-3">
+                                                            <label>Status</label>
+                                                            <select class="form-control select2" name="status" value="<?= $letters->status; ?>" style="width: 100%;">
+                                                                <option selected="selected">Selesai Survei</option>
+                                                                <option>Pembangunan</option>
+                                                                <option>Selesai di Perbaiki</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                            </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <!-- /.modal -->
 
                     </div>
-                </div> -->
+                </div>
 
 
 
@@ -191,6 +219,7 @@
                                         <th scope="col">Kelurahan</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Foto</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -204,18 +233,22 @@
                                             <td><?= $letters->no_surat; ?></td>
                                             <td><?= $letters->alamat; ?></td>
                                             <td><?= $letters->kelurahan; ?></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?= $letters->keterangan; ?></td>
+                                            <td>
+                                                <img src="<?= base_url('image/' . $letters->image) ?>" height="100px" width="100px" alt="image">
+                                            </td>
+                                            <td><?= $letters->status; ?></td>
                                             <td>
 
-                                                <!-- <div class="wrapper-button">
+                                                <div class="wrapper-button">
 
-                                                    <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                    <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
 
-                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
+                                                    <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                </div> -->
+
+                                                </div>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

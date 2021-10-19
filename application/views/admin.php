@@ -93,18 +93,8 @@
                             </h6>
                         </li>
 
-                        <!-- <li class="nav-header">EXAMPLES</li> -->
                         <li>
                             <hr />
-                        </li>
-
-                        <li class="nav-item">
-                            <h6 class="nav-link">
-                                <a href="#">
-                                    <i class="nav-icon far fa-envelope"></i>
-                                    mailbox
-                                </a>
-                            </h6>
                         </li>
 
                         <li class="nav-item">

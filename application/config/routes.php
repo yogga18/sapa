@@ -61,14 +61,14 @@ $route['admin'] = 'admin/index';
 
 // USER
 $route['massage'] = 'member/massage';
-$route['lihatSurat'] = 'member/lihatSurat';
-
+$route['lihatSurat'] = 'Member/lihatSurat';
 // PAGES END
 
 // CONTROLLER
-// $route['delete_post/(:num)'] = 'member/delete_post/$1';
 $route['delete_user/(:num)'] = 'admin/delete_user/$1';
 $route['editUser'] = 'admin/editUser';
+
+$route['delete_post/(:num)'] = 'member/delete_post/$1';
 // CONTROLLER END
 
 $route['default_controller'] = 'member/index';

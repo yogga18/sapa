@@ -27,31 +27,21 @@ class PostModel extends CI_Model
         return $this->db->insert($this->table, $data);
     }
 
-    public function delete($id)
+    public function getDataById($id)
     {
-        return $this->db->delete($this->table, array('id' => $id));
+        $this->db->where('id', $id);
+        return $this->db->get('post');
     }
 
-    // public function delete($id)
-    // {
-    //     $this->db->where('id', $id);
-    //     return $this->db->delete('post');
-    // }
-
-    // public function getDataById($id)
-    // {
-    //     $this->db->where('id', $id);
-    //     return $this->db->get('post');
-    // }
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->delete('post');
+    }
 
     // public function updateFile($id, $data)
     // {
     //     $this->db->where('id', $id);
     //     return $this->db->update('post', $data);
-    // }
-
-    // public function update($data, $id)
-    // {
-    //     return $this->db->update($this->table, $data, array('id' => $id));
     // }
 }

@@ -8,7 +8,6 @@ class Member extends CI_Controller
     {
         parent::__construct();
         $this->home = base_url();
-        $this->profile = base_url("profile");
         $this->load->helper(array('form', 'url'));
         $this->load->model("UserModel");
         $this->load->model("PostModel");
@@ -59,6 +58,7 @@ class Member extends CI_Controller
         $no_surat = $this->input->post("no_surat");
         $alamat = $this->input->post("alamat");
         $kelurahan = $this->input->post("kelurahan");
+        $image = $this->upload_foto();
         $created_at = date("Y-m-d H:i:s");
 
         $data = [
@@ -67,67 +67,109 @@ class Member extends CI_Controller
             "no_surat" => $no_surat,
             "alamat" => $alamat,
             "kelurahan" => $kelurahan,
+            "image" => $image,
             "created_at" => $created_at
         ];
 
         // LOGIC INSERT DATA
         if ($this->PostModel->create($data) != 1) {
-            // echo "
-            // <script>
-            //     alert('Post gagal dikirim');
-            //     document.location.href = \"$this->massage\";
-            // </script>";
             redirect(base_url("massage"));
         }
-        // echo "
-        // <script>
-        // 	alert('Data berhasil di simpan');
-        //     document.location.href = \"$this->massage\";
-        // </script>";
         redirect(base_url("massage"));
     }
-    // INSERT END
-
-    // DELETE
-    public function delete_surat($id)
-    {
-        if ($this->PostModel->delete($id) != 1) {
-            // echo "
-            // <script>
-            //     alert('Post gagal dihapus');
-            //     document.location.href = \"$this->admin\";
-            // </script>";
-            redirect(base_url("lihatSurat"));
-        } else {
-            // echo "
-            // <script>
-            //     alert('Post berhasil dihapus');
-            //     document.location.href = \"$this->admin\";
-            // </script>";
-            redirect(base_url("lihatSurat"));
-        }
-    }
-    // DELETE
 
     //upload image postingan
-    private function _upload_foto()
+    public function upload_foto()
     {
         $config['upload_path']          = './image/';
-        $config['allowed_types']        = 'png|jpg|jpeg|docx|pdf|xlsx';
+        $config['allowed_types']        = 'png|jpg|jpeg';
         $config['overwrite']            = true;
         $config['max_size']             = 102400;
 
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('image')) {
-            echo "
-            <script>
-			alert('Terjadi kesalahan upload');
-			document.location.href = \"$this->profile\";
-            </script>";
-            die();
+            redirect(base_url("massage"));
         } else {
             return $this->upload->data("file_name");
         }
     }
+    // INSERT END
+
+    public function editSurat()
+    {
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // DELETE
+    public function delete_surat($id)
+    {
+        if ($this->PostModel->deleteSurat($id) != 1) {
+            // echo "
+            // <script>
+            //     alert('Post gagal dihapus');
+            //     document.location.href = \"$this->lihatSurat\";
+            // </script>";
+            redirect(base_url("lihatSurat"));
+        } else {
+            // echo "
+            // <script>
+            //     alert('Post berhasil dihapus');
+            //     document.location.href = \"$this->lihatSurat\";
+            // </script>";
+            redirect(base_url("lihatSurat"));
+        }
+    }
+    // DELETE END
+
+    // public function editSurat()
+    // {
+    //     $id = $this->input->post('id');
+    //     $user_id = $this->input->post('user_id');
+    //     $tgl_surat = $this->input->post('tgl_surat');
+    //     $no_surat = $this->input->post('no_surat');
+    //     $alamat = $this->input->post('alamat');
+    //     $kelurahan = $this->input->post('kelurahan');
+    //     $keterangan = $this->input->post('keterangan');
+    //     $foto = $this->input->post('foto');
+    //     $status = $this->input->post('status');
+    //     $created_at = $this->input->post('created_at');
+
+    //     $data = array(
+    //         'tgl_surat' => $tgl_surat,
+    //         'no_surat' => $no_surat,
+    //         'alamat' => $alamat,
+    //         'kelurahan' => $kelurahan,
+    //         'status' => $status,
+    //     );
+
+    //     if ($this->PostModel->update($data, $id) == 1) {
+    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+    //         redirect(base_url("lihatSurat"));
+    //     } else {
+    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+    //         redirect(base_url("lihatSurat"));
+    //     }
+    // }
 }

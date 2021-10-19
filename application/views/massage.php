@@ -129,23 +129,31 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form class="form" role="form" method="post" action="<?= base_url('Member/create_letter'); ?>">
+                        <form class="form" enctype="multipart/form-data" role="form" method="post" action="<?= base_url('Member/create_letter'); ?>">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tgl Surat</label>
                                     <input type="date" name="tgl_surat" class="form-control datetimepicker-input" placeholder="Enter email">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">No Surat</label>
                                     <input type="text" name="no_surat" class="form-control" placeholder="No Surat">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Alamat</label>
                                     <input type="text" name="alamat" class="form-control" placeholder="Alamat">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Kelurahan</label>
                                     <input type="text" name="kelurahan" class="form-control" placeholder="Alamat">
+                                </div>
+
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input">
+                                    <label class="custom-file-label" for="customFile">Document</label>
                                 </div>
 
                             </div>

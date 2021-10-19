@@ -113,6 +113,72 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
 
+
+            <!-- /.modal -->
+            <?php foreach ($letter as $letters) : ?>
+                <div class="modal fade" id="modal-lg<?= $letters->id; ?>">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Surat Aduan</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form class="form" role="form" method="post" action="editSurat" role="form" enctype="multipart/form-data">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tanggal Surat</label>
+                                            <input value="<?= $letters->id; ?>" type="hidden" name="id">
+                                            <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">No Surat</label>
+                                            <input class="form-control" id="email" name="no_surat" value="<?= $letters->no_surat; ?>" type="text">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Alamat</label>
+                                            <input class="form-control" value="<?= $letters->alamat; ?>" type="text" name="alamat">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Kelurahan</label>
+                                            <input class="form-control" value="<?= $letters->kelurahan; ?>" type="text" name="kelurahan">
+                                        </div>
+
+                                        <!-- HIDEN FIELD -->
+                                        <div class="form-group">
+                                            <input class="form-control" value="<?= $letters->keterangan; ?>" type="hidden" name="keterangan">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" value="<?= $letters->image; ?>" type="hidden" name="image">
+                                        </div>
+                                        <!-- HIDEN FIELD END -->
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Status</label>
+                                            <input class="form-control" value="<?= $letters->status; ?>" type="text" name="status" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <!-- /.modal -->
+
+
             <div class="tab-content pt-5">
                 <div class="tab-empty">
                     <h2 class="display-4">Surat Aduan</h2>
@@ -130,6 +196,7 @@
                                         <th scope="col">No Surat</th>
                                         <th scope="col">Alamat</th>
                                         <th scope="col">Kelurahan</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -142,14 +209,14 @@
                                         <td><?= $letters->no_surat; ?></td>
                                         <td><?= $letters->alamat; ?></td>
                                         <td><?= $letters->kelurahan; ?></td>
+                                        <td><?= $letters->status; ?></td>
                                         <td>
                                             <div class="wrapper-button">
+                                                <!-- <a class="btn btn-danger btn-sm" href="delete_surat/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a> -->
 
-                                                <a class="btn btn-danger btn-sm" href="delete_surat/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
-
-                                                <!-- <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
+                                                <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                     <i class="fas fa-edit"></i>
-                                                </a> -->
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
