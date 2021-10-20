@@ -39,9 +39,16 @@ class PostModel extends CI_Model
         return $this->db->delete('post');
     }
 
-    // public function updateFile($id, $data)
-    // {
-    //     $this->db->where('id', $id);
-    //     return $this->db->update('post', $data);
-    // }
+
+    public function editPost($id)
+    {
+        $query = $this->db->get_where('post', ['id' => $id]);
+        return $query->row();
+    }
+
+    public function updateFile($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('post', $data);
+    }
 }

@@ -54,14 +54,18 @@ class Member extends CI_Controller
     // INSERT
     public function create_letter()
     {
+        $id = $this->input->post("id");
         $tgl_surat = $this->input->post("tgl_surat");
         $no_surat = $this->input->post("no_surat");
         $alamat = $this->input->post("alamat");
         $kelurahan = $this->input->post("kelurahan");
+        // $keterangan = $this->input->post("keterangan");
         $image = $this->upload_foto();
+        // $status = $this->input->post("status");
         $created_at = date("Y-m-d H:i:s");
 
         $data = [
+            "id" => $id,
             "user_id" => $this->user->id,
             "tgl_surat" => $tgl_surat,
             "no_surat" => $no_surat,
@@ -95,6 +99,19 @@ class Member extends CI_Controller
         }
     }
     // INSERT END
+
+    public function deletePost($id)
+    {
+        $data = $this->PostModel->getDataById($id)->row();
+        $image = './image/' . $data->image;
+
+        if (is_readable($image) && unlink($image)) {
+            $delete = $this->PostModel->delete($id);
+            redirect(base_url("lihatSurat"));
+        } else {
+            redirect(base_url("lihatSurat"));
+        }
+    }
 
     public function editSurat()
     {

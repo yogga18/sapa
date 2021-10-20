@@ -133,34 +133,34 @@
                                             </button>
                                         </div>
 
-                                        <form class="form" role="form" method="post" enctype="multipart/form-data" action="">
+                                        <form class="form" role="form" method="post" enctype="multipart/form-data" action="<?= base_url('Admin/updateSurat') ?>">
 
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="">Tanggal Surat</label>
                                                         <input value="<?= $letters->id; ?>" type="hidden" name="id">
-                                                        <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date" required>
+                                                        <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="">No Surat</label>
-                                                        <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text" required>
+                                                        <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="">Alamat</label>
-                                                        <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text" required>
+                                                        <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="">Kelurahan</label>
-                                                        <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text" required>
+                                                        <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="">Keterangan</label>
-                                                        <input class="form-control" id="keterangan" name="keterangan" value="<?= $letters->keterangan; ?>" type="text" required>
+                                                        <input class="form-control" id="keterangan" name="keterangan" value="<?= $letters->keterangan; ?>" type="text">
                                                     </div>
 
                                                     <h5>Foto</h5>
@@ -168,20 +168,13 @@
                                                     <img src="<?= base_url('image/' . $letters->image) ?>" height="150px" width="300px" alt="image">
 
                                                     <div class="custom-file">
-                                                        <input type="hidden" name="old_image" value="<?= $letters->image; ?>">
-                                                        <input type="file" name="image" class="custom-file-input" id="customFile">
+                                                        <input type="file" class="custom-file-input" id="customFile" name="image" required>
                                                         <label class="custom-file-label" for="customFile">Pilih gambar</label>
                                                     </div>
 
-                                                    <div class="form-group py-3">
-                                                        <div class="form-group py-3">
-                                                            <label>Status</label>
-                                                            <select class="form-control select2" name="status" value="<?= $letters->status; ?>" style="width: 100%;">
-                                                                <option selected="selected">Selesai Survei</option>
-                                                                <option>Pembangunan</option>
-                                                                <option>Selesai di Perbaiki</option>
-                                                            </select>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="">Status</label>
+                                                        <input class="form-control" id="status" name="status" value="<?= $letters->status; ?>" type="text">
                                                     </div>
 
                                                 </div>
@@ -234,20 +227,20 @@
                                             <td><?= $letters->alamat; ?></td>
                                             <td><?= $letters->kelurahan; ?></td>
                                             <td><?= $letters->keterangan; ?></td>
-                                            <td>
-                                                <img src="<?= base_url('image/' . $letters->image) ?>" height="100px" width="100px" alt="image">
-                                            </td>
+                                            <td><?= $letters->image; ?></td>
                                             <td><?= $letters->status; ?></td>
                                             <td>
-
                                                 <div class="wrapper-button">
-
+                                                    <!-- DELETE -->
                                                     <a class="btn btn-danger btn-sm" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
-
+                                                    <!-- EDIT -->
                                                     <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-
+                                                    <!-- DOWNLOAD -->
+                                                    <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
+                                                        <i class="fas fa-file-download"></i>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

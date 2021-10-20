@@ -34,7 +34,6 @@ class Admin extends CI_Controller
         $data = [
             "user" => $this->user,
             "letter" => $this->PostModel->getAll()
-
         ];
         $this->load->view('suratMasuk', $data);
     }
@@ -103,59 +102,52 @@ class Admin extends CI_Controller
         }
     }
 
-    // public function updateSurat($id)
-    // {
+    public function updateSurat()
+    {
+        $id = $this->input->post('id');
 
-    //     $this->form_validation->set_rules('tgl_surat', 'Tgl_surat', 'required');
-    //     $this->form_validation->set_rules('no_surat', 'No_surat', 'required');
-    //     $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-    //     $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
-    //     $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
-    //     $this->form_validation->set_rules('image', 'Image', 'required');
-    //     $this->form_validation->set_rules('status', 'Status', 'required');
+        $data = $this->PostModel->getDataById($id)->row();
+        $image = './image/' . $data->image;
 
-    //     if ($this->form_validation->run()) {
-    //         $old_image = $this->input->post('old_image');
-    //         $new_image = $_FILES["image"]['name'];
+        if (is_readable($image) && unlink($image)) {
 
-    //         if ($new_image == TRUE) {
-    //             $update_filename = time() . "-" . str_replace('', '-', $_FILES["image"]['name']);
+            $config['upload_path']          = './image/';
+            $config['allowed_types']        = 'png|jpg|jpeg';
+            $config['overwrite']            = true;
+            $config['max_size']             = 102400;
 
-    //             $config = [
-    //                 'upload_path' => "./image/",
-    //                 'allowed_types' => "png|jpg|jpeg",
-    //                 'overwrite' => true,
-    //                 'max_size' => 102400,
-    //                 'file_name' => $update_filename,
-    //             ];
+            $this->load->library('upload', $config);
 
-    //             $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('image')) {
+                redirect(base_url("Admin/suratMasuk"));
+            } else {
+                // return $this->upload->data("file_name");
 
-    //             if ($this->upload->do_upload('image')) {
-    //                 if (file_exists("./image/" . $old_image)) {
-    //                     unlink("./image/" . $old_image);
-    //                 }
-    //             }
-    //         } else {
-    //             $update_filename = $old_image;
-    //         }
+                $upload_data = $this->upload->data();
+                $image = $upload_data['file_name'];
 
-    //         $data = [
-    //             'tgl_surat' => $this->input->post('tgl_surat'),
-    //             'no_surat' => $this->input->post('no_surat'),
-    //             'alamat' => $this->input->post('alamat'),
-    //             'kelurahan' => $this->input->post('kelurahan'),
-    //             'keterangan' => $this->input->post('keterangan'),
-    //             'image' => $update_filename,
-    //         ];
+                $data = array(
+                    "id" => $this->input->post('id'),
+                    "no_surat" => $this->input->post('no_surat'),
+                    "alamat" => $this->input->post('alamat'),
+                    "kelurahan" => $this->input->post('kelurahan'),
+                    "keterangan" => $this->input->post('keterangan'),
+                    "image" => $image,
+                    "status" => $this->input->post('status'),
+                );
 
-    //         $PostModel = new PostModel;
-    //         $res = $PostModel->updateFile($data, $id);
-    //         $this->session->set_flashdata('status', 'done');
-    //         redirect(base_url('suratMasuk'));
-    //     } else {
-    //         return $this->editSurat($id);
-    //     }
-    // }
+                $update = $this->PostModel->updateFile($id, $data);
+
+                if ($update) {
+                    redirect(base_url("Admin/suratMasuk"));
+                } else {
+                    redirect(base_url("Admin/suratMasuk"));
+                }
+            }
+        }
+    }
+
+
+
     // CRUD PAGES SURAT MASUK BPBD END
 }

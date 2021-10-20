@@ -160,6 +160,11 @@
                                         </div>
                                         <!-- HIDEN FIELD END -->
 
+                                        <!-- <div class="form-group">
+                                            <label for="exampleInputPassword1">Foto Kejadian</label>
+                                            <img src="<?= base_url('image/' . $letters->image) ?>" height="150px" width="300px" alt="image">
+                                        </div> -->
+
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Status</label>
                                             <input class="form-control" value="<?= $letters->status; ?>" type="text" name="status" disabled>
@@ -196,6 +201,7 @@
                                         <th scope="col">No Surat</th>
                                         <th scope="col">Alamat</th>
                                         <th scope="col">Kelurahan</th>
+                                        <th scope="col">Foto</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -209,10 +215,11 @@
                                         <td><?= $letters->no_surat; ?></td>
                                         <td><?= $letters->alamat; ?></td>
                                         <td><?= $letters->kelurahan; ?></td>
+                                        <td><?= $letters->image; ?></td>
                                         <td><?= $letters->status; ?></td>
                                         <td>
                                             <div class="wrapper-button">
-                                                <!-- <a class="btn btn-danger btn-sm" href="delete_surat/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a> -->
+                                                <a class="btn btn-danger btn-sm" href="deletePost/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
 
                                                 <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                     <i class="fas fa-edit"></i>

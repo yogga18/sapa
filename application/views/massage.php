@@ -151,8 +151,9 @@
                                     <input type="text" name="kelurahan" class="form-control" placeholder="Alamat">
                                 </div>
 
+                                <p>Foto Kejadian</p>
                                 <div class="custom-file">
-                                    <input type="file" name="image" class="custom-file-input">
+                                    <input type="file" name="image" class="custom-file-input" required>
                                     <label class="custom-file-label" for="customFile">Document</label>
                                 </div>
 

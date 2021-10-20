@@ -68,8 +68,10 @@ $route['lihatSurat'] = 'Member/lihatSurat';
 $route['delete_user/(:num)'] = 'admin/delete_user/$1';
 $route['editUser'] = 'admin/editUser';
 
-$route['delete_post/(:num)'] = 'member/delete_post/$1';
+$route['delete_post/(:num)'] = 'admin/delete_post/$1'; // DELETE POST UNTUK ADMIN
+$route['deletePost/(:num)'] = 'member/deletePost/$1';   // DELETE POST UNTUK MEMBER
 // CONTROLLER END
+
 
 $route['default_controller'] = 'member/index';
 $route['404_override'] = '';
