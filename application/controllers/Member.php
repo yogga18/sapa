@@ -33,7 +33,6 @@ class Member extends CI_Controller
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAll()
         ];
         $this->load->view('massage', $data);
     }
@@ -48,7 +47,62 @@ class Member extends CI_Controller
         $this->load->view('lihatSurat', $data);
     }
 
+    public function semuaSurat()
+    {
+        $data = [
+            "user" => $this->user,
+            "letter" => $this->PostModel->getAll()
+        ];
 
+        $this->load->view('semuaSurat', $data);
+    }
+
+
+    public function updateProfile()
+    {
+        // Buat kerangka sesuai field di table database
+        $id = $this->input->post("id");
+        $username = $this->input->post("username");
+        $email = $this->input->post("email");
+        $avatar = $this->input->post("old_avatar");
+        if (!empty($_FILES["new_avatar"]["name"])) {
+            $avatar = $this->_upload_avatar();
+        }
+
+        // tentukan data mana saja yang ingin atau bisa di ubah (Susai Form di HTML)
+        $data = [
+            "username" => $username,
+            "email" => $email,
+            "avatar" => $avatar
+        ];
+
+        if ($this->UserModel->update($data, $id) == 1) {
+            redirect(base_url("home"));
+        } else {
+            redirect(base_url("home"));
+        }
+    }
+
+    //mengupload foto profil
+    private function _upload_avatar()
+    {
+        $config['upload_path']          = './avatar/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['file_name']            = uniqid();
+        $config['overwrite']            = true;
+        $config['max_size']             = 1000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('new_avatar')) {
+            redirect(base_url("home"));
+        } else {
+            if ($this->user->avatar != null && file_exists("./avatar/" . $this->user->avatar)) {
+                unlink("./avatar/" . $this->user->avatar);
+            }
+            return $this->upload->data("file_name");
+        }
+    }
 
 
     // INSERT
@@ -115,78 +169,46 @@ class Member extends CI_Controller
 
     public function editSurat()
     {
-    }
+        $id = $this->input->post('id');
 
+        $data = $this->PostModel->getDataById($id)->row();
+        $image = './image/' . $data->image;
 
+        if (is_readable($image) && unlink($image)) {
 
+            $config['upload_path']          = './image/';
+            $config['allowed_types']        = 'png|jpg|jpeg';
+            $config['overwrite']            = true;
+            $config['max_size']             = 102400;
 
+            $this->load->library('upload', $config);
 
+            if (!$this->upload->do_upload('image')) {
+                redirect(base_url("Admin/lihatSurat"));
+            } else {
+                // return $this->upload->data("file_name");
 
+                $upload_data = $this->upload->data();
+                $image = $upload_data['file_name'];
 
+                $data = array(
+                    "id" => $this->input->post('id'),
+                    "no_surat" => $this->input->post('no_surat'),
+                    "alamat" => $this->input->post('alamat'),
+                    "kelurahan" => $this->input->post('kelurahan'),
+                    "keterangan" => $this->input->post('keterangan'),
+                    "image" => $image,
+                    "status" => $this->input->post('status'),
+                );
 
+                $update = $this->PostModel->updateFile($id, $data);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // DELETE
-    public function delete_surat($id)
-    {
-        if ($this->PostModel->deleteSurat($id) != 1) {
-            // echo "
-            // <script>
-            //     alert('Post gagal dihapus');
-            //     document.location.href = \"$this->lihatSurat\";
-            // </script>";
-            redirect(base_url("lihatSurat"));
-        } else {
-            // echo "
-            // <script>
-            //     alert('Post berhasil dihapus');
-            //     document.location.href = \"$this->lihatSurat\";
-            // </script>";
-            redirect(base_url("lihatSurat"));
+                if ($update) {
+                    redirect(base_url("Member/lihatSurat"));
+                } else {
+                    redirect(base_url("Member/lihatSurat"));
+                }
+            }
         }
     }
-    // DELETE END
-
-    // public function editSurat()
-    // {
-    //     $id = $this->input->post('id');
-    //     $user_id = $this->input->post('user_id');
-    //     $tgl_surat = $this->input->post('tgl_surat');
-    //     $no_surat = $this->input->post('no_surat');
-    //     $alamat = $this->input->post('alamat');
-    //     $kelurahan = $this->input->post('kelurahan');
-    //     $keterangan = $this->input->post('keterangan');
-    //     $foto = $this->input->post('foto');
-    //     $status = $this->input->post('status');
-    //     $created_at = $this->input->post('created_at');
-
-    //     $data = array(
-    //         'tgl_surat' => $tgl_surat,
-    //         'no_surat' => $no_surat,
-    //         'alamat' => $alamat,
-    //         'kelurahan' => $kelurahan,
-    //         'status' => $status,
-    //     );
-
-    //     if ($this->PostModel->update($data, $id) == 1) {
-    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-    //         redirect(base_url("lihatSurat"));
-    //     } else {
-    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-    //         redirect(base_url("lihatSurat"));
-    //     }
-    // }
 }

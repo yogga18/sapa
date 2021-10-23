@@ -140,10 +140,10 @@
                                         <input class="form-control" id="email" name="email" value="<?= $members->email; ?>" type="email" required>
                                     </div>
 
-                                    <!-- <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input class="form-control" value="<?= $members->password; ?>" type="email" name="email" required>
-                                </div> -->
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input class="form-control" value="<?= $members->password; ?>" type="hidden" name="password">
+                                    </div>
                                 </div>
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

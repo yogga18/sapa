@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Tabbed IFrames</title>
+    <title>E-Pengaduan</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -49,7 +49,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <?php if ($user->avatar != null) : ?>
-                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="250" height="250">
+                            <img src="avatar/<?= $user->avatar; ?>" class="img-circle elevation-2" width="450" height="450">
                         <?php else : ?>
                             <img src="<?= base_url(); ?>assets/img/default.jpg" width="250" height="250" class="img-circle elevation-2">
                         <?php endif; ?>
@@ -58,6 +58,11 @@
                         <a href="#" class="d-block"><?= $user->username; ?></a>
                         <a href="#" class="d-block"><?= $user->email; ?></a>
                     </div>
+                    <!-- <p><i class="fas fa-edit"></i></p> -->
+
+                    <a class="btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </div>
 
 
@@ -87,7 +92,16 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/lihatSurat">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Lihat Surat
+                                    Surat Saya
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/semuaSurat">
+                                    <i class="nav-icon fas fa-mail-bulk"></i>
+                                    Semua Surat Aduan
                                 </a>
                             </h6>
                         </li>
@@ -117,7 +131,62 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <!-- <h2 class="display-4">PAGE HOME</h2> -->
+                    <div class="modal fade" id="modal-lg">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit Profile</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <form class="form" role="form" method="post" enctype="multipart/form-data" action="updateProfile">
+
+                                    <input value="<?= $user->id; ?>" type="hidden" name="id">
+                                    <input value="<?= $user->avatar; ?>" type="hidden" name="old_avatar">
+
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                                                    </div>
+                                                    <input class="form-control" value="<?= $user->username; ?>" type="text" name="username" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                    </div>
+                                                    <input class="form-control" value="<?= $user->email; ?>" type="email" name="email" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFile" name="new_avatar">
+                                                <label class="custom-file-label" for="customFile">Pilih gambar</label>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary my-4">Simpan</button>
+                                            </div>
+
+                                        </div>
+                                        <!-- <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div> -->
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -141,11 +210,24 @@
 
                             <div class="info-box-content">
                                 <a href="<?= base_url(); ?>member/lihatSurat">
-                                    <h5 class="info-box-text">Lihat Surat</h5>
+                                    <h5 class="info-box-text">Surat Saya</h5>
                                 </a>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-warning"><i class="fas fa-mail-bulk"></i></span>
+
+                            <div class="info-box-content">
+                                <a href="<?= base_url(); ?>member/semuaSurat">
+                                    <h5 class="info-box-text">Semua Surat</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

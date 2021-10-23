@@ -60,6 +60,7 @@ $route['logout'] = 'auth/logout';
 $route['admin'] = 'admin/index';
 
 // USER
+$route['home'] = 'member/index';
 $route['massage'] = 'member/massage';
 $route['lihatSurat'] = 'Member/lihatSurat';
 // PAGES END
@@ -70,6 +71,8 @@ $route['editUser'] = 'admin/editUser';
 
 $route['delete_post/(:num)'] = 'admin/delete_post/$1'; // DELETE POST UNTUK ADMIN
 $route['deletePost/(:num)'] = 'member/deletePost/$1';   // DELETE POST UNTUK MEMBER
+
+$route['updateProfile'] = 'member/update_profile';  // UPDATE PROFILE UNTUK MEMBER
 // CONTROLLER END
 
 

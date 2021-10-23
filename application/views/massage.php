@@ -87,7 +87,16 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/lihatSurat">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Lihat Surat
+                                    Surat Saya
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/semuaSurat">
+                                    <i class="nav-icon fas fa-mail-bulk"></i>
+                                    Semua Surat Aduan
                                 </a>
                             </h6>
                         </li>

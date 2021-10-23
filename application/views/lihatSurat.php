@@ -85,7 +85,16 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/lihatSurat">
                                     <i class="nav-icon fas fa-eye"></i>
-                                    Lihat Surat
+                                    Surat Saya
+                                </a>
+                            </h6>
+                        </li>
+
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>member/semuaSurat">
+                                    <i class="nav-icon fas fa-mail-bulk"></i>
+                                    Semua Surat Aduan
                                 </a>
                             </h6>
                         </li>
@@ -126,49 +135,48 @@
                                 </button>
                             </div>
 
-                            <form class="form" role="form" method="post" action="editSurat" role="form" enctype="multipart/form-data">
+                            <form class="form" role="form" method="post" enctype="multipart/form-data" action="<?= base_url('Member/editSurat') ?>">
 
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Tanggal Surat</label>
+                                            <label for="">Tanggal Surat</label>
                                             <input value="<?= $letters->id; ?>" type="hidden" name="id">
                                             <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">No Surat</label>
-                                            <input class="form-control" id="email" name="no_surat" value="<?= $letters->no_surat; ?>" type="text">
+                                            <label for="">No Surat</label>
+                                            <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Alamat</label>
-                                            <input class="form-control" value="<?= $letters->alamat; ?>" type="text" name="alamat">
+                                            <label for="">Alamat</label>
+                                            <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Kelurahan</label>
-                                            <input class="form-control" value="<?= $letters->kelurahan; ?>" type="text" name="kelurahan">
+                                            <label for="">Kelurahan</label>
+                                            <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text">
                                         </div>
 
-                                        <!-- HIDEN FIELD -->
                                         <div class="form-group">
-                                            <input class="form-control" value="<?= $letters->keterangan; ?>" type="hidden" name="keterangan">
+                                            <input class="form-control" id="keterangan" name="keterangan" value="<?= $letters->keterangan; ?>" type="hidden">
                                         </div>
-                                        <div class="form-group">
-                                            <input class="form-control" value="<?= $letters->image; ?>" type="hidden" name="image">
-                                        </div>
-                                        <!-- HIDEN FIELD END -->
 
-                                        <!-- <div class="form-group">
-                                            <label for="exampleInputPassword1">Foto Kejadian</label>
-                                            <img src="<?= base_url('image/' . $letters->image) ?>" height="150px" width="300px" alt="image">
-                                        </div> -->
+                                        <h5>Foto</h5>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Status</label>
-                                            <input class="form-control" value="<?= $letters->status; ?>" type="text" name="status" disabled>
+                                        <img src="<?= base_url('image/' . $letters->image) ?>" height="150px" width="300px" alt="image">
+
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile" name="image" required>
+                                            <label class="custom-file-label" for="customFile">Pilih gambar</label>
                                         </div>
+
+                                        <div class="form-group py-4">
+                                            <input class="form-control" id="status" name="status" value="<?= $letters->status; ?>" type="hidden">
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -219,10 +227,15 @@
                                         <td><?= $letters->status; ?></td>
                                         <td>
                                             <div class="wrapper-button">
+                                                <!-- DELETE -->
                                                 <a class="btn btn-danger btn-sm" href="deletePost/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
-
+                                                <!-- EDIT -->
                                                 <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                     <i class="fas fa-edit"></i>
+                                                </a>
+                                                <!-- DOWNLOAD -->
+                                                <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
+                                                    <i class="fas fa-file-download"></i>
                                                 </a>
                                             </div>
                                         </td>
