@@ -58,7 +58,6 @@
                         <a href="#" class="d-block"><?= $user->username; ?></a>
                         <a href="#" class="d-block"><?= $user->email; ?></a>
                     </div>
-                    <!-- <p><i class="fas fa-edit"></i></p> -->
 
                     <a class="btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg">
                         <i class="fas fa-edit"></i>
@@ -186,10 +185,6 @@
                                             </div>
 
                                         </div>
-                                        <!-- <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div> -->
                                     </div>
                                 </form>
 

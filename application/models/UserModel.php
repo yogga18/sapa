@@ -17,7 +17,7 @@ class UserModel extends CI_Model
         return $this->db->get($this->table)->result();  // Mengambil semua data di table user
     }
 
-    // FOR ADMIN
+    // USER ACCOUNT PAGE
 
     public function create($data)   // INSERT DATA (registrasi)
     {
@@ -34,5 +34,5 @@ class UserModel extends CI_Model
         return $this->db->update($this->table, $data, array('id' => $id));
     }
 
-    // FOR ADMIN END
+    // USER ACCOUNT PAGE END
 }
