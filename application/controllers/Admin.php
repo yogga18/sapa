@@ -37,6 +37,14 @@ class Admin extends CI_Controller
         ];
         $this->load->view('suratMasuk', $data);
     }
+
+    public function about()
+    {
+        $data = [
+            "user" => $this->user,
+        ];
+        $this->load->view('about', $data);
+    }
     // PAGES END
 
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title>SAPA / Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,9 +29,6 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="<?= base_url('auth/logout'); ?>" class="nav-link">Logout</a>
                 </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>auth/logout" class="nav-link">Logout</a>
-                </li> -->
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -39,9 +36,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="<?= base_url('assets/dist/img/AdminLTELogo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Pengaduan</span>
+            <a href="<?= base_url(); ?>Admin/about" class="brand-link">
+                <img src="<?= base_url('assets/dist/img/pupr.png') ?>" alt="PUPR Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <h3>SAPA</h3>
             </a>
 
             <!-- Sidebar -->
@@ -93,6 +90,15 @@
                             </h6>
                         </li>
 
+                        <li class="nav-item">
+                            <h6 class="nav-link">
+                                <a href="<?= base_url(); ?>Admin/about">
+                                    <i class="nav-icon fas fa-info-circle"></i>
+                                    About
+                                </a>
+                            </h6>
+                        </li>
+
                         <li>
                             <hr />
                         </li>
@@ -100,7 +106,7 @@
                         <li class="nav-item">
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>auth/logout">
-                                    <i class="nav-icon far fa-envelope"></i>
+                                    <i class="nav-icon fas fa-door-open"></i>
                                     Logout
                                 </a>
                             </h6>
@@ -141,7 +147,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
+                                        <!-- <label for="exampleInputPassword1">Password</label> -->
                                         <input class="form-control" value="<?= $members->password; ?>" type="hidden" name="password">
                                     </div>
                                 </div>
