@@ -12,19 +12,35 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
+
+    <style>
+        body {
+            background-image: url("https://www.pu.go.id/assets/img/pu/infra-8.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
-    <div class="container my-5">
+<body>
+    <!-- <img class="image" src="https://www.pu.go.id/assets/img/pu/infra-8.jpg" alt="Background"> -->
+
+    <div class="container my-5 mx-auto">
+
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">LOGIN</h3>
             </div>
 
             <form class="form" role="form" method="post" action="<?= base_url('auth/post_login'); ?>">
-                <div class="card-body">
+                <div class="card-body bg-secondary">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
                         <input type="text" class="form-control" placeholder="User Name" id="username" name="username" required="required">
@@ -34,13 +50,14 @@
                         <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="required">
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer bg-secondary">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
 
         </div>
     </div>
+
     <!-- ./wrapper -->
 
     <!-- jQuery -->

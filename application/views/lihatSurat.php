@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
+    <!-- Sweet alert -->
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/bootstrap-4.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/toastr.min.css') ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -76,7 +79,7 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/massage">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengaduan
                                 </a>
                             </h6>
                         </li>
@@ -151,22 +154,22 @@
                                         <div class="form-group">
                                             <label for="">Tanggal Surat</label>
                                             <input value="<?= $letters->id; ?>" type="hidden" name="id">
-                                            <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date">
+                                            <input class="form-control" id="tgl_surat" name="tgl_surat" value="<?= $letters->tgl_surat; ?>" type="date" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">No Surat</label>
-                                            <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text">
+                                            <input class="form-control" id="no_surat" name="no_surat" value="<?= $letters->no_surat; ?>" type="text" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Alamat</label>
-                                            <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text">
+                                            <input class="form-control" id="alamat" name="alamat" value="<?= $letters->alamat; ?>" type="text" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Kelurahan</label>
-                                            <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text">
+                                            <input class="form-control" id="kelurahan" name="kelurahan" value="<?= $letters->kelurahan; ?>" type="text" required>
                                         </div>
 
                                         <div class="form-group">
@@ -203,7 +206,8 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">Surat Aduan</h2>
+                    <h2 class="display-4">Surat Aduan <?= $user->username; ?></h2>
+                    <!-- <a href="#" class="d-block"><?= $user->username; ?></a> -->
                 </div>
 
                 <div class="container my-5">
@@ -237,7 +241,7 @@
                                         <td>
                                             <div class="wrapper-button">
                                                 <!-- DELETE -->
-                                                <a class="btn btn-danger btn-sm" href="deletePost/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                <a class="btn btn-danger btn-sm swalDefaultSuccess" href="deletePost/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                 <!-- EDIT -->
                                                 <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
                                                     <i class="fas fa-edit"></i>
@@ -291,6 +295,8 @@
         <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
         <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <!-- sweet alert -->
+        <script src="<?= base_url('assets/dist/js/sweetalert2.min.js') ?>"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url('') ?>assets/dist/js/adminlte.min.js"></script>
         <!-- Page specific script -->
@@ -310,6 +316,35 @@
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,
+                });
+            });
+
+            // Sweet alert
+            $(function() {
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                $('.swalDefaultSuccess').click(function() {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Data Berhasil Dihapus.'
+                    })
+                });
+                $('.swalDefaultError').click(function() {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                    })
+                });
+                $('.swalDefaultWarning').click(function() {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                    })
                 });
             });
         </script>

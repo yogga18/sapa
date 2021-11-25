@@ -94,12 +94,17 @@
 
                 <h2 style="text-align: center;">Sistem Aduan Penaggulangan Bencana</h2>
 
-                <div class="container my-5">
-                    <p style="text-align: justify;"> <b>SAPA ( Sistem Aduan Penaggulangan Bencan )</b> dibangun untuk mempermudah membuat laporan surat aduan tanah longsor dari BPBD Kota Bogor yang akan di terima oleh Dinas PUPR Kota Bogor, Dinas PUPR akan melakukan survei ke lokasi terdampak bencana agar bisa melihat seberapa parah dampak dari bencana tanah longsor tersebut lalu Dinas PUPR akan mengkaji dan memutuskan pembangunan ulang bangunan yang terdampak bencana tanah longsor dan Dinas PUPR akan memberi level dan mengirim report status pada lokasi terdampak jika sudah Selesai Survei, Sedang Dalam Pembangunan, atau Selesai Pembangunan.</p>
+                <div class="card mx-auto my-5" style="width: 90%;">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
 
-                    <p> Semua data yang di dapat akan di jadikan report laporan bulanan oleh sub bidang Sumber Daya Alam, baik berupa pdf maupun excel.</p>
+                        <p style="text-align: justify;"> <b>SAPA ( Sistem Aduan Penaggulangan Bencan )</b> dibangun untuk mempermudah membuat laporan surat aduan tanah longsor dari BPBD Kota Bogor yang akan di terima oleh Dinas PUPR Kota Bogor, Dinas PUPR akan melakukan survei ke lokasi terdampak bencana agar bisa melihat seberapa parah dampak dari bencana tanah longsor tersebut lalu Dinas PUPR akan mengkaji dan memutuskan pembangunan ulang bangunan yang terdampak bencana tanah longsor dan Dinas PUPR akan memberi level dan mengirim report status pada lokasi terdampak jika sudah Selesai Survei, Sedang Dalam Pembangunan, atau Selesai Pembangunan.</p>
+
+                        <p> Semua data yang di dapat akan di jadikan report laporan bulanan oleh sub bidang Sumber Daya Alam, baik berupa pdf maupun excel.</p>
+
+                    </div>
                 </div>
-
                 <!-- CODE HERE -->
 
             </div>

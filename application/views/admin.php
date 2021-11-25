@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
+    <!-- Sweet alert -->
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/bootstrap-4.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/toastr.min.css') ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -171,7 +174,7 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">User Account</h2>
+                    <h2 class="display-4">Semua Akun Pengguna</h2>
                 </div>
 
                 <div class="container my-5">
@@ -200,7 +203,7 @@
                                             <td>
                                                 <div class="wrapper-button">
                                                     <!-- DELETE -->
-                                                    <a class="btn btn-danger btn-sm" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                    <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_user/<?= $members->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                     <!-- UPDATE -->
                                                     <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $members->id; ?>">
                                                         <i class="fas fa-edit"></i>
@@ -250,6 +253,8 @@
         <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
         <script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <!-- sweet alert -->
+        <script src="<?= base_url('assets/dist/js/sweetalert2.min.js') ?>"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url('') ?>assets/dist/js/adminlte.min.js"></script>
         <!-- Page specific script -->
@@ -269,6 +274,35 @@
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,
+                });
+            });
+
+            // Sweet alert
+            $(function() {
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                $('.swalDefaultSuccess').click(function() {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Data Berhasil Dihapus.'
+                    })
+                });
+                $('.swalDefaultError').click(function() {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                    })
+                });
+                $('.swalDefaultWarning').click(function() {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                    })
                 });
             });
         </script>

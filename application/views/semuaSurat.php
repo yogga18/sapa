@@ -76,7 +76,7 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/massage">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengaduan
                                 </a>
                             </h6>
                         </li>
@@ -133,7 +133,7 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">Surat Aduan</h2>
+                    <h2 class="display-4">Semua Data Surat Aduan</h2>
                 </div>
 
                 <div class="container my-5">

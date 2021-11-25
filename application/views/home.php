@@ -82,7 +82,7 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/massage">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengaduan
                                 </a>
                             </h6>
                         </li>
@@ -136,7 +136,6 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
-
             <div class="tab-content pt-5">
                 <div class="tab-empty">
                     <div class="modal fade" id="modal-lg">
@@ -202,7 +201,7 @@
                             <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
                             <div class="info-box-content">
                                 <a href="<?= base_url(); ?>member/massage">
-                                    <h5 class="info-box-text">Messages</h5>
+                                    <h5 class="info-box-text">Pengaduan</h5>
                                 </a>
                             </div>
                         </div>

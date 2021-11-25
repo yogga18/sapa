@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
+
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/bootstrap-4.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/toastr.min.css') ?>">
+
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
 </head>
@@ -78,7 +82,7 @@
                             <h6 class="nav-link">
                                 <a href="<?= base_url(); ?>member/massage">
                                     <i class="nav-icon far fa-envelope"></i>
-                                    Messages
+                                    Pengaduan
                                 </a>
                             </h6>
                         </li>
@@ -134,16 +138,15 @@
 
             <div class="tab-content pt-5">
                 <div class="tab-empty">
-                    <h2 class="display-4">PAGE MASSAGES</h2>
+                    <h2 class="display-4">Kirim Surat Pengaduan Bencana</h2>
                 </div>
             </div>
-
 
             <div class="container-fluid">
                 <div class="col-md-10 m-auto">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Kirim Surat Pengaduan</h3>
+                            <h3 class="card-title">Isi Form Surat Pengaduan</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -151,22 +154,22 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tgl Surat</label>
-                                    <input type="date" name="tgl_surat" class="form-control datetimepicker-input" placeholder="Enter email">
+                                    <input type="date" name="tgl_surat" class="form-control datetimepicker-input" placeholder="Masukkan Tanggal">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">No Surat</label>
-                                    <input type="text" name="no_surat" class="form-control" placeholder="No Surat">
+                                    <input type="text" name="no_surat" class="form-control" placeholder="No Surat" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control" placeholder="Alamat">
+                                    <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Kelurahan</label>
-                                    <input type="text" name="kelurahan" class="form-control" placeholder="Alamat">
+                                    <input type="text" name="kelurahan" class="form-control" placeholder="Kelurahan" required>
                                 </div>
 
                                 <p>Foto Kejadian</p>
@@ -184,6 +187,19 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Sweet Alert
+            <button type="button" class="btn btn-success swalDefaultSuccess">
+                Launch Success Toast
+            </button>
+
+            <button type="button" class="btn btn-warning swalDefaultWarning">
+                Launch Warning Toast
+            </button>
+
+            <button type="button" class="btn btn-danger swalDefaultError">
+                Launch Error Toast
+            </button> -->
 
         </div>
         <!-- /.content-wrapper -->
@@ -211,6 +227,40 @@
     <script src="<?= base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
+
+    <script src="<?= base_url('assets/dist/js/sweetalert2.min.js') ?>"></script>
+
+
+    <script>
+        $(function() {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            $('.swalDefaultSuccess').click(function() {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.swalDefaultError').click(function() {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+            $('.swalDefaultWarning').click(function() {
+                Toast.fire({
+                    icon: 'warning',
+                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                })
+            });
+        });
+    </script>
+
 </body>
 
 </html>

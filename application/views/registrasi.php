@@ -134,7 +134,7 @@
                             <a href="#" class="h1"><b>PUPR</b></a>
                         </div>
                         <div class="card-body">
-                            <p class="login-box-msg">Buat Akun E - Pengaduan</p>
+                            <p class="login-box-msg">Buat Akun SAPA</p>
 
                             <form class="form" role="form" method="post" action="post_register">
                                 <div class="card">
@@ -158,7 +158,7 @@
                                         </div>
 
                                         <div class="input-group mb-3">
-                                            <input type="password" name='password' class="form-control" placeholder="Password">
+                                            <input type="password" name='password' class="form-control" placeholder="Password" required>
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span class="fas fa-lock"></span>

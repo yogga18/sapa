@@ -131,9 +131,19 @@ class Member extends CI_Controller
 
         // LOGIC INSERT DATA
         if ($this->PostModel->create($data) != 1) {
-            redirect(base_url("massage"));
+            // redirect(base_url("massage"));
+            echo "
+            <script>
+                alert('Surat Berhasil Terkirim');
+                document.location.href = 'massage';
+            </script>";
         }
-        redirect(base_url("massage"));
+        // redirect(base_url("massage"));
+        echo "
+        <script>
+            alert('Surat Berhasil Terkirim');
+            document.location.href = 'massage';
+        </script>";
     }
 
     //upload image postingan
@@ -204,9 +214,19 @@ class Member extends CI_Controller
                 $update = $this->PostModel->updateFile($id, $data);
 
                 if ($update) {
-                    redirect(base_url("Member/lihatSurat"));
+                    // redirect(base_url("Member/lihatSurat"));
+                    echo "
+                    <script>
+                        alert('Surat Berhasil di Edit');
+                        document.location.href = 'lihatSurat';
+                    </script>";
                 } else {
-                    redirect(base_url("Member/lihatSurat"));
+                    // redirect(base_url("Member/lihatSurat"));
+                    echo "
+                    <script>
+                        alert('Surat Berhasil di Edit');
+                        document.location.href = 'lihatSurat';
+                    </script>";
                 }
             }
         }

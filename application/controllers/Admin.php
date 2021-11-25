@@ -53,18 +53,8 @@ class Admin extends CI_Controller
     public function delete_user($id)
     {
         if ($this->UserModel->deleteUser($id) != 1) {
-            // echo "
-            // <script>
-            //     alert('Post gagal dihapus');
-            //     document.location.href = \"$this->admin\";
-            // </script>";
             redirect(base_url("admin"));
         } else {
-            // echo "
-            // <script>
-            //     alert('Post berhasil dihapus');
-            //     document.location.href = \"$this->admin\";
-            // </script>";
             redirect(base_url("admin"));
         }
     }
@@ -85,18 +75,26 @@ class Admin extends CI_Controller
         );
 
         if ($this->UserModel->update($data, $id) == 1) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-            redirect(base_url("admin"));
+            // redirect(base_url("admin"));
+            echo "
+            <script>
+                alert('Data User Berhasil Di Edit');
+                document.location.href = 'index';
+            </script>";
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-            redirect(base_url("admin"));
+            // redirect(base_url("admin"));
+            echo "
+            <script>
+                alert('Data User Berhasil Di Edit');
+                document.location.href = 'index';
+            </script>";
         }
     }
     // CRUD PAGES USER ACCOUNT END
 
 
-    // CRUD PAGES SURAT MASUK BPBD
 
+    // CRUD PAGES SURAT MASUK BPBD
     public function delete_post($id)
     {
         $data = $this->PostModel->getDataById($id)->row();
@@ -147,9 +145,19 @@ class Admin extends CI_Controller
                 $update = $this->PostModel->updateFile($id, $data);
 
                 if ($update) {
-                    redirect(base_url("Admin/suratMasuk"));
+                    echo "
+                    <script>
+                        alert('Data User Berhasil Di Edit');
+                        document.location.href = 'suratMasuk';
+                    </script>";
+                    // redirect(base_url("Admin/suratMasuk"));
                 } else {
-                    redirect(base_url("Admin/suratMasuk"));
+                    echo "
+                    <script>
+                        alert('Data User Berhasil Di Edit');
+                        document.location.href = 'suratMasuk';
+                    </script>";
+                    // redirect(base_url("Admin/suratMasuk"));
                 }
             }
         }
