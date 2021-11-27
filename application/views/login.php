@@ -25,6 +25,40 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        .card-header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+            width: 70%;
+        }
+
+        .card-logo {
+            width: 30%;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        @media only screen and (max-width:980px) {
+
+            .card-title {
+                width: 100%;
+                text-align: center;
+            }
+
+            .card-logo {
+                visibility: hidden;
+            }
+        }
     </style>
 
 </head>
@@ -32,30 +66,35 @@
 <body>
     <!-- <img class="image" src="https://www.pu.go.id/assets/img/pu/infra-8.jpg" alt="Background"> -->
 
-    <div class="container my-5 mx-auto">
+    <div class="container">
 
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">LOGIN</h3>
+        <div class="container-fluid my-5">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">LOGIN - SAPA (Sistem Aduan Penaggulangan Bencana)</h3>
+                    <div id="logo" class="card-logo">
+                        <img src="https://th.bing.com/th/id/R.44d698fcf9ad9c82a745b9a543f348d8?rik=o2e7GORVF3MGGg&riu=http%3a%2f%2fsda.pu.go.id%2fbalai%2fbwssumatera6%2fwp-content%2fuploads%2f2020%2f11%2f200721-Logo-PUPR-Logo-Komunikasi-Primary-Color-750x250.png&ehk=wlohHEd75Mz5nzTsNh9uA9mMieYjUxPJzdQiDCrEy0E%3d&risl=&pid=ImgRaw&r=0" alt="logo pupr">
+                    </div>
+                </div>
+
+                <form class="form" role="form" method="post" action="<?= base_url('auth/post_login'); ?>">
+                    <div class="card-body bg-secondary">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="text" class="form-control" placeholder="User Name" id="username" name="username" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="required">
+                        </div>
+                    </div>
+                    <div class="card-footer bg-secondary">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
-
-            <form class="form" role="form" method="post" action="<?= base_url('auth/post_login'); ?>">
-                <div class="card-body bg-secondary">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" placeholder="User Name" id="username" name="username" required="required">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="required">
-                    </div>
-                </div>
-                <div class="card-footer bg-secondary">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-
         </div>
+
     </div>
 
     <!-- ./wrapper -->
