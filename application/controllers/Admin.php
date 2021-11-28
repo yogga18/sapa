@@ -33,8 +33,14 @@ class Admin extends CI_Controller
     {
         $data = [
             "user" => $this->user,
-            "letter" => $this->PostModel->getAll()
+            "letter" => $this->PostModel->getAll(),
+            "sSurvei" => $this->PostModel->getWhereSurvei(),
+            "sPerbaikan" => $this->PostModel->getWherePerbaikan(),
         ];
+
+        // $oke = [
+        //     "oke" => $this->postModel->getWhere()
+        // ];
         $this->load->view('suratMasuk', $data);
     }
 

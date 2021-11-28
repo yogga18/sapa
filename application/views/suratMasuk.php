@@ -206,12 +206,9 @@
                     </div>
                 </div>
 
-
-
-
-
+                <!-- MAIN TABLE -->
                 <div class="container my-5">
-                    <div class="card">
+                    <div class="card card-primary card-outline">
 
                         <div class="card-body">
                             <table id="example1" class="table table-hover table-bordered table-striped">
@@ -262,10 +259,149 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
+                <!-- MAIN TABLE END -->
 
+                <!-- SECOND TABLE -->
+                <div class="container my-5 mb-5">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="far fa-chart-bar"></i>
+                                Status Selesai Perbaikan
+                            </h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="bar-chart" style="height: 400px;">
+
+                                <table id="example3" class="table table-hover table-bordered table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Tgl Surat</th>
+                                            <th scope="col">No Surat</th>
+                                            <th scope="col">Alamat</th>
+                                            <th scope="col">Kelurahan</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($sPerbaikan as $perbaikan) : ?>
+                                            <tr class="table-warning">
+                                                <th scope="row"><?= $i++; ?></th>
+                                                <td><?= $perbaikan->tgl_surat; ?></td>
+                                                <td><?= $perbaikan->no_surat; ?></td>
+                                                <td><?= $perbaikan->alamat; ?></td>
+                                                <td><?= $perbaikan->kelurahan; ?></td>
+                                                <td><?= $perbaikan->keterangan; ?></td>
+                                                <td><?= $perbaikan->image; ?></td>
+                                                <td><?= $perbaikan->status; ?></td>
+                                                <td>
+                                                    <div class="wrapper-button">
+                                                        <!-- DELETE -->
+                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                        <!-- EDIT -->
+                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <!-- DOWNLOAD -->
+                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
+                                                            <i class="fas fa-file-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- SECOND TABLE END-->
+
+                <!-- THIRD TABLE -->
+                <div class="container my-5">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="far fa-chart-bar"></i>
+                                Status Selesai Survei
+                            </h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="bar-chart" style="height: 400px;">
+
+                                <table id="example4" class="table table-hover table-bordered table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Tgl Surat</th>
+                                            <th scope="col">No Surat</th>
+                                            <th scope="col">Alamat</th>
+                                            <th scope="col">Kelurahan</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($sSurvei as $survei) : ?>
+                                            <tr class="table-warning">
+                                                <th scope="row"><?= $i++; ?></th>
+                                                <td><?= $survei->tgl_surat; ?></td>
+                                                <td><?= $survei->no_surat; ?></td>
+                                                <td><?= $survei->alamat; ?></td>
+                                                <td><?= $survei->kelurahan; ?></td>
+                                                <td><?= $survei->keterangan; ?></td>
+                                                <td><?= $survei->image; ?></td>
+                                                <td><?= $survei->status; ?></td>
+                                                <td>
+                                                    <div class="wrapper-button">
+                                                        <!-- DELETE -->
+                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                        <!-- EDIT -->
+                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <!-- DOWNLOAD -->
+                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
+                                                            <i class="fas fa-file-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- THIRD TABLE END -->
             </div>
 
         </div>
@@ -304,6 +440,9 @@
         <!-- AdminLTE App -->
         <script src="<?= base_url('') ?>assets/dist/js/adminlte.min.js"></script>
         <!-- Page specific script -->
+
+        <!-- CHARTS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             $(function() {
                 $("#example1").DataTable({
@@ -312,6 +451,42 @@
                     "autoWidth": false,
                     "buttons": ["csv", "excel", "pdf", "print"]
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+
+            $(function() {
+                $("#example3").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": ["csv", "excel", "pdf", "print"]
+                }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+
+            $(function() {
+                $("#example4").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": ["csv", "excel", "pdf", "print"]
+                }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
                 $('#example2').DataTable({
                     "paging": true,
                     "lengthChange": false,
@@ -351,6 +526,10 @@
                     })
                 });
             });
+
+            // BAR CHART
+
+            /* END BAR CHART */
         </script>
 
 

@@ -17,6 +17,16 @@ class PostModel extends CI_Model
         return $this->db->query("SELECT u.*, p.* FROM post p INNER JOIN user u WHERE p.user_id=u.id ORDER BY created_at DESC")->result();
     }
 
+    public function getWherePerbaikan()
+    {
+        return $this->db->get_where($this->table, array('status' => 'Selesai Perbaikan'))->result();
+    }
+
+    public function getWhereSurvei()
+    {
+        return $this->db->get_where($this->table, array('status' => 'Selesai Survei'))->result();
+    }
+
     public function getAllByUser($id)
     {   // Hanya menampilkan data dari table post berdasarkan user yang sedang login saja
         return $this->db->query("SELECT * FROM post WHERE user_id='$id' ORDER BY created_at DESC")->result();
