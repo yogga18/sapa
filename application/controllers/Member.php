@@ -77,9 +77,17 @@ class Member extends CI_Controller
         ];
 
         if ($this->UserModel->update($data, $id) == 1) {
-            redirect(base_url("home"));
+            echo "
+            <script>
+                alert('Data Berhasil Di Edit');
+                document.location.href = 'lihatSurat';
+            </script>";
         } else {
-            redirect(base_url("home"));
+            echo "
+            <script>
+                alert('Data Gagal Di Edit');
+                document.location.href = 'lihatSurat';
+            </script>";
         }
     }
 

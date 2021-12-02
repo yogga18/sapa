@@ -186,7 +186,12 @@
 
                                                     <div class="form-group py-4">
                                                         <label for="">Status</label>
-                                                        <input class="form-control" id="status" name="status" value="<?= $letters->status; ?>" type="text">
+                                                        <!-- <input class="form-control" id="status" name="status" value="<?= $letters->status; ?>" type="text"> -->
+                                                        <select id="status" name="status" class="form-control">
+                                                            <option id="status" name="status" value="">- Pilih Status -</option>
+                                                            <option id="status" name="status" value="Selesai Survei">- Selesai Survei -</option>
+                                                            <option id="status" name="status" value="Selesai Perbaikan">- Selesai Perbaikan -</option>
+                                                        </select>
                                                     </div>
 
                                                 </div>
@@ -263,13 +268,13 @@
                 </div>
                 <!-- MAIN TABLE END -->
 
-                <!-- SECOND TABLE -->
+                <!-- EMPTY TABLE -->
                 <div class="container my-5 mb-5">
-                    <div class="card card-primary card-outline">
+                    <div class="card card-danger card-outline">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <i class="far fa-chart-bar"></i>
-                                Status Selesai Perbaikan
+                                <i class="fas fa-exclamation-circle" style="color: red"></i>
+                                Status <b>Belum dilakukan Survei</b>
                             </h3>
 
                             <div class="card-tools">
@@ -282,7 +287,7 @@
                             <div id="bar-chart" style="height: 400px;">
 
                                 <table id="example3" class="table table-hover table-bordered table-striped">
-                                    <thead class="table-dark">
+                                    <thead class="table-danger">
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Tgl Surat</th>
@@ -298,26 +303,26 @@
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        foreach ($sPerbaikan as $perbaikan) : ?>
-                                            <tr class="table-warning">
+                                        foreach ($sEmpty as $empty) : ?>
+                                            <tr class="table-light">
                                                 <th scope="row"><?= $i++; ?></th>
-                                                <td><?= $perbaikan->tgl_surat; ?></td>
-                                                <td><?= $perbaikan->no_surat; ?></td>
-                                                <td><?= $perbaikan->alamat; ?></td>
-                                                <td><?= $perbaikan->kelurahan; ?></td>
-                                                <td><?= $perbaikan->keterangan; ?></td>
-                                                <td><?= $perbaikan->image; ?></td>
-                                                <td><?= $perbaikan->status; ?></td>
+                                                <td><?= $empty->tgl_surat; ?></td>
+                                                <td><?= $empty->no_surat; ?></td>
+                                                <td><?= $empty->alamat; ?></td>
+                                                <td><?= $empty->kelurahan; ?></td>
+                                                <td><?= $empty->keterangan; ?></td>
+                                                <td><?= $empty->image; ?></td>
+                                                <td><?= $empty->status; ?></td>
                                                 <td>
                                                     <div class="wrapper-button">
                                                         <!-- DELETE -->
-                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $empty->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                         <!-- EDIT -->
-                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
+                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $empty->id; ?>">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <!-- DOWNLOAD -->
-                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
+                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$empty->image") ?>" download>
                                                             <i class="fas fa-file-download"></i>
                                                         </a>
                                                     </div>
@@ -331,15 +336,15 @@
                         </div>
                     </div>
                 </div>
-                <!-- SECOND TABLE END-->
+                <!-- EMPTY TABLE END -->
 
-                <!-- THIRD TABLE -->
+                <!-- Selesai Survei TABLE -->
                 <div class="container my-5">
-                    <div class="card card-primary card-outline">
+                    <div class="card card-warning card-outline">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <i class="far fa-chart-bar"></i>
-                                Status Selesai Survei
+                                <i class="fas fa-exclamation-triangle" style="color: yellow"></i>
+                                Status <b>Selesai Survei</b>
                             </h3>
 
                             <div class="card-tools">
@@ -352,7 +357,7 @@
                             <div id="bar-chart" style="height: 400px;">
 
                                 <table id="example4" class="table table-hover table-bordered table-striped">
-                                    <thead class="table-dark">
+                                    <thead class="table-warning">
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Tgl Surat</th>
@@ -369,7 +374,7 @@
                                         <?php
                                         $i = 1;
                                         foreach ($sSurvei as $survei) : ?>
-                                            <tr class="table-warning">
+                                            <tr class="table-light">
                                                 <th scope="row"><?= $i++; ?></th>
                                                 <td><?= $survei->tgl_surat; ?></td>
                                                 <td><?= $survei->no_surat; ?></td>
@@ -381,13 +386,13 @@
                                                 <td>
                                                     <div class="wrapper-button">
                                                         <!-- DELETE -->
-                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $letters->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $survei->id; ?>"><i class="fas fa-trash-alt"></i></a>
                                                         <!-- EDIT -->
-                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $letters->id; ?>">
+                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $survei->id; ?>">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <!-- DOWNLOAD -->
-                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$letters->image") ?>" download>
+                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$survei->image") ?>" download>
                                                             <i class="fas fa-file-download"></i>
                                                         </a>
                                                     </div>
@@ -401,7 +406,77 @@
                         </div>
                     </div>
                 </div>
-                <!-- THIRD TABLE END -->
+                <!-- Selesai Survei TABLE END -->
+
+                <!-- Selesai Perbaikan TABLE -->
+                <div class="container my-5 mb-5">
+                    <div class="card card-success card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-check-circle" style="color: green"></i>
+                                Status <b>Selesai Perbaikan</b>
+                            </h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="bar-chart" style="height: 400px;">
+
+                                <table id="example3" class="table table-hover table-bordered table-striped">
+                                    <thead class="table-success">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Tgl Surat</th>
+                                            <th scope="col">No Surat</th>
+                                            <th scope="col">Alamat</th>
+                                            <th scope="col">Kelurahan</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($sPerbaikan as $perbaikan) : ?>
+                                            <tr class="table-light">
+                                                <th scope="row"><?= $i++; ?></th>
+                                                <td><?= $perbaikan->tgl_surat; ?></td>
+                                                <td><?= $perbaikan->no_surat; ?></td>
+                                                <td><?= $perbaikan->alamat; ?></td>
+                                                <td><?= $perbaikan->kelurahan; ?></td>
+                                                <td><?= $perbaikan->keterangan; ?></td>
+                                                <td><?= $perbaikan->image; ?></td>
+                                                <td><?= $perbaikan->status; ?></td>
+                                                <td>
+                                                    <div class="wrapper-button">
+                                                        <!-- DELETE -->
+                                                        <a class="btn btn-danger btn-sm swalDefaultSuccess" href="delete_post/<?= $perbaikan->id; ?>"><i class="fas fa-trash-alt"></i></a>
+                                                        <!-- EDIT -->
+                                                        <a class="btn btn-primary btn-sm" id="editModal" data-toggle="modal" data-target="#modal-lg<?= $perbaikan->id; ?>">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <!-- DOWNLOAD -->
+                                                        <a class="btn btn-info btn-sm" href="<?= base_url("/image/$perbaikan->image") ?>" download>
+                                                            <i class="fas fa-file-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Selesai Perbaikan TABLE END-->
             </div>
 
         </div>

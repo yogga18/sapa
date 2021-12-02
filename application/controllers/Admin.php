@@ -36,11 +36,8 @@ class Admin extends CI_Controller
             "letter" => $this->PostModel->getAll(),
             "sSurvei" => $this->PostModel->getWhereSurvei(),
             "sPerbaikan" => $this->PostModel->getWherePerbaikan(),
+            "sEmpty" => $this->PostModel->getWhereEmpty(),
         ];
-
-        // $oke = [
-        //     "oke" => $this->postModel->getWhere()
-        // ];
         $this->load->view('suratMasuk', $data);
     }
 
@@ -85,14 +82,14 @@ class Admin extends CI_Controller
             echo "
             <script>
                 alert('Data User Berhasil Di Edit');
-                document.location.href = 'index';
+                document.location.href = 'admin';
             </script>";
         } else {
             // redirect(base_url("admin"));
             echo "
             <script>
-                alert('Data User Berhasil Di Edit');
-                document.location.href = 'index';
+                alert('Data User Gagal Di Edit');
+                document.location.href = 'admin';
             </script>";
         }
     }

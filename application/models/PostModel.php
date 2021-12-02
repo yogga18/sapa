@@ -27,6 +27,11 @@ class PostModel extends CI_Model
         return $this->db->get_where($this->table, array('status' => 'Selesai Survei'))->result();
     }
 
+    public function getWhereEmpty()
+    {
+        return $this->db->get_where($this->table, array('status' => ''))->result();
+    }
+
     public function getAllByUser($id)
     {   // Hanya menampilkan data dari table post berdasarkan user yang sedang login saja
         return $this->db->query("SELECT * FROM post WHERE user_id='$id' ORDER BY created_at DESC")->result();
