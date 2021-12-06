@@ -284,7 +284,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="bar-chart" style="height: 400px;">
+                            <div id="bar-chart" style="height: 1400px;">
 
                                 <table id="example3" class="table table-hover table-bordered table-striped">
                                     <thead class="table-danger">
@@ -354,7 +354,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="bar-chart" style="height: 400px;">
+                            <div id="bar-chart" style="height: 1400px;">
 
                                 <table id="example4" class="table table-hover table-bordered table-striped">
                                     <thead class="table-warning">
@@ -424,7 +424,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="bar-chart" style="height: 400px;">
+                            <div id="bar-chart" style="height: 1400px;">
 
                                 <table id="example3" class="table table-hover table-bordered table-striped">
                                     <thead class="table-success">
