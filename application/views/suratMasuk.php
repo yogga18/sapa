@@ -228,7 +228,7 @@
                                         <th scope="col">Foto</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Author</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col"><i class="fas fa-cogs"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -297,7 +297,7 @@
                                             <th scope="col">Keterangan</th>
                                             <th scope="col">Foto</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col"><i class="fas fa-cogs"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -367,7 +367,7 @@
                                             <th scope="col">Keterangan</th>
                                             <th scope="col">Foto</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col"><i class="fas fa-cogs"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -426,7 +426,7 @@
                         <div class="card-body">
                             <div id="bar-chart" style="height: 1400px;">
 
-                                <table id="example3" class="table table-hover table-bordered table-striped">
+                                <table id="example5" class="table table-hover table-bordered table-striped">
                                     <thead class="table-success">
                                         <tr>
                                             <th scope="col">No</th>
@@ -437,7 +437,7 @@
                                             <th scope="col">Keterangan</th>
                                             <th scope="col">Foto</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col"><i class="fas fa-cogs"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -562,6 +562,23 @@
                     "autoWidth": false,
                     "buttons": ["csv", "excel", "pdf", "print"]
                 }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+            $(function() {
+                $("#example5").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": ["csv", "excel", "pdf", "print"]
+                }).buttons().container().appendTo('#example5_wrapper .col-md-6:eq(0)');
                 $('#example2').DataTable({
                     "paging": true,
                     "lengthChange": false,
